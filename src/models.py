@@ -81,7 +81,8 @@ class SGC(torch.nn.Module):
 
 class GNN(torch.nn.Module):
     def __init__(
-        self, num_features, num_classes, hidden_dim, num_layers=2, dropout=0, conv_type="GCN", jumping_knowledge=False,
+            self, num_features, num_classes, hidden_dim, num_layers=2, dropout=0, conv_type="GCN",
+            jumping_knowledge=False,
     ):
         super(GNN, self).__init__()
 
@@ -180,7 +181,7 @@ class MLP(torch.nn.Module):
 
 class GCNmf(torch.nn.Module):
     def __init__(
-        self, num_features, num_classes, hidden_dim, x, edge_index, dropout=0, n_components=5,
+            self, num_features, num_classes, hidden_dim, x, edge_index, dropout=0, n_components=5,
     ):
         super(GCNmf, self).__init__()
         self.gc1 = GCNmfConv(
@@ -207,7 +208,7 @@ class GCNmf(torch.nn.Module):
 
 class PaGNN(torch.nn.Module):
     def __init__(
-        self, num_features, num_classes, hidden_dim, num_layers=2, dropout=0, mask=None, edge_index=None,
+            self, num_features, num_classes, hidden_dim, num_layers=2, dropout=0, mask=None, edge_index=None,
     ):
         super(PaGNN, self).__init__()
         # NOTE: It not specified in their paper (https://arxiv.org/pdf/2003.10130.pdf), but the only way for their model to work is to have only the first layer

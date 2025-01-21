@@ -8,6 +8,7 @@ from torch_geometric.utils.convert import to_networkx
 import networkx as nx
 import numpy as np
 
+
 def get_missing_feature_mask(rate, n_nodes, n_features, type="uniform"):
     """ 
     Return mask of shape [n_nodes, n_features] indicating whether each feature is present or missing.
@@ -44,6 +45,3 @@ def get_symmetrically_normalized_adjacency(edge_index, n_nodes):
     DAD = deg_inv_sqrt[row] * edge_weight * deg_inv_sqrt[col]
 
     return edge_index, DAD
-
-
-

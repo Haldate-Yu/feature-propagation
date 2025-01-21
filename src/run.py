@@ -44,7 +44,7 @@ parser.add_argument(
     type=str,
     help="Method to solve the missing feature problem",
     default="feature_propagation",
-    choices=["random", "zero", "mean", "neighborhood_mean", "feature_propagation",],
+    choices=["random", "zero", "mean", "neighborhood_mean", "feature_propagation", ],
 )
 parser.add_argument(
     "--model",
@@ -87,7 +87,7 @@ def run(args):
     logger.info(args)
 
     assert not (
-        args.graph_sampling and args.model != "sage"
+            args.graph_sampling and args.model != "sage"
     ), f"{args.model} model does not support training with neighborhood sampling"
     assert not (args.graph_sampling and args.jk), "Jumping Knowledge is not supported with neighborhood sampling"
 
@@ -153,7 +153,7 @@ def run(args):
             logger.debug("Starting feature filling")
             start = time.time()
             filled_features = (
-                filling(args.filling_method, data.edge_index, x, missing_feature_mask, args.num_iterations,)
+                filling(args.filling_method, data.edge_index, x, missing_feature_mask, args.num_iterations, )
                 if args.model not in ["gcnmf", "pagnn"]
                 else torch.full_like(x, float("nan"))
             )
@@ -190,7 +190,7 @@ def run(args):
                     y_soft = out.softmax(dim=-1)
 
                 val_accs.append(val_acc)
-                if epoch > args.patience and max(val_accs[-args.patience :]) <= max(val_accs[: -args.patience]):
+                if epoch > args.patience and max(val_accs[-args.patience:]) <= max(val_accs[: -args.patience]):
                     break
                 logger.debug(
                     f"Epoch {epoch + 1} - Train acc: {train_acc:.3f}, Val acc: {val_acc:.3f}, Test acc: {tmp_test_acc:.3f}. It took {time.time() - start:.2f}s"

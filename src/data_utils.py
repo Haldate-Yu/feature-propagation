@@ -79,7 +79,6 @@ def remap_edges(edges: list, mapper: dict) -> list:
 
 
 def set_train_val_test_split(seed: int, data: Data, dataset_name: str, split_idx: int = None) -> Data:
-
     if dataset_name in [
         "Cora",
         "CiteSeer",
@@ -115,9 +114,8 @@ def set_train_val_test_split(seed: int, data: Data, dataset_name: str, split_idx
 
 
 def set_per_class_train_val_test_split(
-    seed: int, data: Data, num_val: int = 1500, num_train_per_class: int = 20, split_idx: int = None,
+        seed: int, data: Data, num_val: int = 1500, num_train_per_class: int = 20, split_idx: int = None,
 ) -> Data:
-
     if split_idx is None:
         rnd_state = np.random.RandomState(development_seed)
         num_nodes = data.y.shape[0]
@@ -159,8 +157,8 @@ def set_uniform_train_val_test_split(seed: int, data: Data, train_ratio: float =
     rnd_state.shuffle(idxs)
 
     train_idx = idxs[:num_train]
-    val_idx = idxs[num_train : num_train + num_val]
-    test_idx = idxs[num_train + num_val :]
+    val_idx = idxs[num_train: num_train + num_val]
+    test_idx = idxs[num_train + num_val:]
 
     train_idx = labeled_nodes[train_idx]
     val_idx = labeled_nodes[val_idx]
