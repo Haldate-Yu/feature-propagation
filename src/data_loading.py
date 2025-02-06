@@ -4,7 +4,7 @@ SPDX-License-Identifier: Apache-2.0
 """
 import os
 
-from torch_geometric.datasets import Planetoid, MixHopSyntheticDataset
+from torch_geometric.datasets import Planetoid, MixHopSyntheticDataset, Amazon
 import torch_geometric.transforms as transforms
 from torch_geometric.utils import to_undirected, add_remaining_self_loops
 from ogb.nodeproppred import PygNodePropPredDataset, Evaluator
@@ -26,6 +26,8 @@ def get_dataset(name: str, use_lcc: bool = True, homophily=None):
         use_lcc = False
     elif name == "MixHopSynthetic":
         dataset = MixHopSyntheticDataset(path, homophily=homophily)
+    elif name in ["Photo", "Computers"]:
+        dataset = Amazon(path, name)
     else:
         raise Exception("Unknown dataset.")
 

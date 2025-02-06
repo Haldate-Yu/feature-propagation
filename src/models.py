@@ -65,6 +65,8 @@ def get_model(model_name, num_features, num_classes, edge_index, x, args, mask=N
         )
     elif model_name == "lp":
         return LabelPropagation(num_layers=50, alpha=args.lp_alpha)
+    elif model_name == "graphmae":
+        pass
     else:
         raise ValueError(f"Model {model_name} not supported")
 
