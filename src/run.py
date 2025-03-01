@@ -196,7 +196,7 @@ def run(args):
                     f"Epoch {epoch + 1} - Train acc: {train_acc:.3f}, Val acc: {val_acc:.3f}, Test acc: {tmp_test_acc:.3f}. It took {time.time() - start:.2f}s"
                 )
 
-            (_, val_acc, test_acc), _ = test(model, x=x, data=data, logits=y_soft, evaluator=evaluator)
+            # (_, val_acc, test_acc), _ = test(model, x=x, data=data, logits=y_soft, evaluator=evaluator)
         best_val_accs.append(val_acc)
         test_accs.append(test_acc)
         train_times.append(time.time() - train_start)
